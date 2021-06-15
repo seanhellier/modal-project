@@ -2,7 +2,7 @@
   <!-- <h1>My First Vue App!</h1> -->
   <h1>{{ title }}</h1>
 
-  <modal />
+  <modal :header="header" :text="text" theme="sale"/>
 
   <input type="text" ref="name">
   <button @click="handleClick">click me</button>
@@ -16,7 +16,9 @@ export default {
   components: { Modal },
   data() {
     return {
-      title: 'My First Vue App!'
+      title: `My First Vue App!`,
+      header: `sign up for the giveaway`,
+      text: `grab your ninja swag for half price!`,
     }
   },
   methods: {
