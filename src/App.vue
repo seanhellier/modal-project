@@ -8,7 +8,7 @@
   <modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
 </div>
 
-<button @click="toggleModal">show modal</button>
+<button @click.shift="toggleModal">show modal (shift)</button>
 
   <input type="text" ref="name">
   <button @click="handleClick">click me</button>
