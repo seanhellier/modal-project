@@ -5,7 +5,14 @@
   <p>Welcome...</p>
 
 <div v-if=showModal>
-  <modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
+  <modal theme="sale" @close="toggleModal">
+    <template v-slot:links>
+      <a href="#">Sign Up</a>
+      <a href ="#">More Info</a>
+    </template>
+    <h1>ninja giveaway</h1>
+    <p>grab your swag for half price!</p>
+    </modal>/>
 </div>
 
 <button @click.shift="toggleModal">show modal (shift)</button>
