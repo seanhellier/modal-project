@@ -1,48 +1,51 @@
 <template>
-  <!-- <h1>My First Vue App!</h1> -->
   <h1>{{ title }}</h1>
-
   <p>Welcome...</p>
 
-<div v-if=showModal>
-  <modal theme="sale" @close="toggleModal">
-    <template v-slot:links>
-      <a href="#">Sign Up</a>
-      <a href ="#">More Info</a>
-    </template>
-    <h1>ninja giveaway</h1>
-    <p>grab your swag for half price!</p>
-    </modal>/>
-</div>
+  <div v-if="showModal">
+    <Modal theme="sale" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">sign up now</a>
+        <a href="#">more info</a>
+      </template>
+      <h1>Ninja Givaway!</h1>
+      <p>Grab your ninja swag for half price!</p>
+    </Modal>
+  </div>  
 
-<button @click.shift="toggleModal">show modal (shift)</button>
+  <div v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <h1>Sign up to the Newsletter</h1>
+      <p>For updates and promo codes!</p>
+    </Modal>
+  </div>
 
-  <input type="text" ref="name">
-  <button @click="handleClick">click me</button>
+  <button @click.alt="toggleModal">open modal (alt click)</button>
+  <button @click="toggleModalTwo">open modal 2</button>
 </template>
 
 <script>
-import Modal from "./components/Modal.vue"
-
+// challenge
+//   - create an extra button to open a different modal
+//   - use the same modal component but pass in a different template (slot)
+//   - use a different method (e.g. toggleModalTwo) and data (e.g. showModalTwo)
+import Modal from './components/Modal'
 export default {
   name: 'App',
   components: { Modal },
   data() {
     return {
-      title: `My First Vue App!`,
-      header: `sign up for the giveaway`,
-      text: `grab your ninja swag for half price!`,
+      title: 'My First Vue App!',
       showModal: false,
+      showModalTwo: false,
     }
   },
   methods: {
-    handleClick() {
-      console.log(this.$refs.name)
-      this.$refs.name.classList.add(`active`)
-      this.$refs.name.focus()
-    },
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
@@ -61,5 +64,14 @@ h1 {
   border-bottom: 1px solid #ddd;
   display: inline-block;
   padding-bottom: 10px;
+}
+button {
+  background: #bbb;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin: 10px;
+  font-size: 16px;
+  color: #333;
 }
 </style>
